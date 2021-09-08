@@ -1,3 +1,4 @@
+import { IProperty } from './../IProperty.interface';
 import { Component, Input } from "@angular/core";
 
 // @Component({
@@ -18,5 +19,6 @@ export class PropertyCardComponent {
   //   "Type":"House",
   //   "Price":12000
   // }
-  @Input() Property:any
+  // @Input() Property:any
+  @Input() Property:IProperty // it allow to have intellisense to reduce typo in development time
 }
