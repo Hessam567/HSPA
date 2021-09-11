@@ -1,3 +1,4 @@
+import { UserServiceService } from './services/user-service.service';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { PropertyNotfoundComponent } from './property/property-notfound/property-notfound.component';
@@ -36,7 +37,7 @@ const appRoute: Routes = [
     FormsModule,//to use template form way
     ReactiveFormsModule,// to use reactive forms way
     RouterModule.forRoot(appRoute)],
-  providers: [HousingService],
+  providers: [HousingService,UserServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
