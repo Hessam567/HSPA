@@ -1,3 +1,5 @@
+import { AuthService } from './services/auth.service';
+import { AlertifyService } from './services/alertify.service';
 import { UserServiceService } from './services/user-service.service';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
@@ -14,7 +16,12 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HousingService } from './services/housing.service';
 import { Routes, RouterModule } from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {TabsModule} from 'ngx-bootstrap/tabs';
+import {ButtonsModule} from 'ngx-bootstrap/buttons';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 const appRoute: Routes = [
   { path: '', component: PropertyListComponent },//home page
@@ -31,13 +38,19 @@ const appRoute: Routes = [
     AppComponent,NavBarComponent,
     PropertyCardComponent,PropertyListComponent,
     AddPropertyComponent,PropertyDetailComponent,
-    PropertyNotfoundComponent,UserLoginComponent,UserRegisterComponent
+    PropertyNotfoundComponent,UserLoginComponent,UserRegisterComponent,
   ],
-  imports: [BrowserModule, HttpClientModule,
+  imports: [
+    BrowserModule, HttpClientModule,
     FormsModule,//to use template form way
     ReactiveFormsModule,// to use reactive forms way
-    RouterModule.forRoot(appRoute)],
-  providers: [HousingService,UserServiceService],
+    RouterModule.forRoot(appRoute),
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot(),BsDatepickerModule.forRoot()
+  ],
+  providers: [HousingService,UserServiceService,AlertifyService,AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

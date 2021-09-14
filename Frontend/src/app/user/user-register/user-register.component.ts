@@ -1,3 +1,4 @@
+import { AlertifyService } from './../../services/alertify.service';
 import { IUser } from './../../model/IUser';
 import { UserServiceService } from './../../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,7 +22,8 @@ export class UserRegisterComponent implements OnInit {
   userSubmitted: boolean;
   constructor(
     private fb: FormBuilder,
-    private userService: UserServiceService
+    private userService: UserServiceService,
+    private alertifyService:AlertifyService
   ) {}
 
   ngOnInit() {
@@ -92,6 +94,11 @@ export class UserRegisterComponent implements OnInit {
       this.userService.addUser(this.userData());
       this.registrationForm.reset();
       this.userSubmitted = false;
+      this.alertifyService.Success("موفق باشید");
+    }
+    else
+    {
+      this.alertifyService.Failure("موفق نبود");
     }
   }
 
